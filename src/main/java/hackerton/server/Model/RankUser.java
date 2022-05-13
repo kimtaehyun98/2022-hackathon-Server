@@ -1,20 +1,14 @@
 package hackerton.server.Model;
 
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
 
-
-@Getter
-@Setter
-public class Member {
-
-    private Long memberId;
+@Getter @Setter
+@AllArgsConstructor
+public class RankUser {
 
     private String memberName;
 
-    private String memberPw;
-
-
     private Long memberTotalScore;
-
 }
