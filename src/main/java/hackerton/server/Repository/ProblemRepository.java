@@ -17,13 +17,13 @@ public class ProblemRepository {
 		this.jdbcTemplate = new JdbcTemplate(dataSource);
 	}
 	
-	public List<UserProblem> checkSolve(int uid, int pid){
-		String query = "select * from USER_PROBLEM where memberId = ? and problemId = ?";
-		Object[] param = new Object[]{uid, pid};
+	public List<UserProblem> checkSolve(String name, int pid){
+		String query = "select * from USER_PROBLEM where memberName = ? and problemId = ?";
+		Object[] param = new Object[]{name, pid};
 		return this.jdbcTemplate.query(query,
 				(rs, rowNum) -> new UserProblem(
 						rs.getLong("userProblemId"),
-						rs.getLong("memberId"),
+						rs.getString("memberName"),
 						rs.getLong("problemId"),
 						rs.getLong("score")
 				),
@@ -31,18 +31,18 @@ public class ProblemRepository {
 		);
 	}
 	
-	public void insertUserProblem(int uid, int pid, int score){
+	public void insertUserProblem(String name, int pid, int score){
 		String query = "insert USER_PROBLEM VALUES (default, ?, ?, ?)";
-		Object[] param = new Object[]{uid, pid, score};
+		Object[] param = new Object[]{name, pid, score};
 		this.jdbcTemplate.update(query, param);
 
-		query = "update MEMBER set memberSolveCnt = memberSolveCnt + 1 WHERE memberId = ?";
-		this.jdbcTemplate.update(query, uid);
+		query = "update MEMBER set memberSolveCnt = memberSolveCnt + 1 WHERE memberName = ?";
+		this.jdbcTemplate.update(query, name);
 	}
 	
-	public void updateUserProblem(int uid, int pid, int score){
-		String query = "update USER_PROBLEM set score = ? where memberId = ? and problemId = ?";
-		Object[] param = new Object[]{score, uid, pid};
+	public void updateUserProblem(String name, int pid, int score){
+		String query = "update USER_PROBLEM set score = ? where memberName = ? and problemId = ?";
+		Object[] param = new Object[]{score, name, pid};
 		this.jdbcTemplate.update(query, param);
 	}
 	

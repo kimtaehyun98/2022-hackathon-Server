@@ -9,7 +9,10 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+
 @RestController
+@RequestMapping("/create")
+@CrossOrigin(origins = "http://localhost:3000")
 public class MemberController {
 
     private final MemberRepository memberRepository;
@@ -23,7 +26,7 @@ public class MemberController {
 
     @PostMapping("/create/account")
     public void createMember(@RequestBody PostMember postMember){
-        memberService.createMember(postMember.getMemberId(), postMember.getMemberName(), postMember.getMemberEmail());
+        memberService.createMember(postMember.getMemberName(), postMember.getMemberEmail());
     }
 
     @GetMapping("/account")
