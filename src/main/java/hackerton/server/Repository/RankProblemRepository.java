@@ -13,10 +13,10 @@ public class RankProblemRepository {
     private static final DataSourceConfig dataSourceConfig = new DataSourceConfig();
     private JdbcTemplate jdbcTemplate = new JdbcTemplate(dataSourceConfig.getDataSource());
 
-    @Autowired
+    /*@Autowired
     public void setDataSource(DataSource dataSource) {
         this.jdbcTemplate = new JdbcTemplate(dataSource);
-    }
+    }*/
 
 
     public List<RankProblem> getAllRankProblem() throws SQLException {

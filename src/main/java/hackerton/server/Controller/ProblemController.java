@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController("/problem")
 public class ProblemController {
-	
+
 	private final ProblemRepository problemRepository;
 	private final ProblemService problemService;
 	
