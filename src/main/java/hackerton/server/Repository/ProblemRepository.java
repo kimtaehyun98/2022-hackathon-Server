@@ -48,9 +48,9 @@ public class ProblemRepository {
 		return this.jdbcTemplate.queryForObject(query, Integer.class, pid);
 	}
 	
-	public void updateTopScore(int pid, int score){
-		String query = "update PROBLEM set topScore = ? where problemId = ?";
-		Object[] param = new Object[]{score, pid};
+	public void updateTopScore(int pid, int score, String name){
+		String query = "update PROBLEM set topScore = ? , topMemberName = ? where problemId = ?";
+		Object[] param = new Object[]{score, name, pid};
 		this.jdbcTemplate.update(query, param);
 	}
 	
