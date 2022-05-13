@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @Slf4j
-@CrossOrigin(origins = {"http://localhost:3000", "http://homespeak.s3-website.ap-northeast-2.amazonaws.com/#/"})
+@CrossOrigin(origins = "http://homespeak.s3-website.ap-northeast-2.amazonaws.com/#/")
 public class ProblemController {
 
 	private final ProblemRepository problemRepository;
