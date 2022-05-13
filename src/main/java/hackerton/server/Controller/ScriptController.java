@@ -17,7 +17,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/scripts")
 @Slf4j
-@CrossOrigin(origins = {"http://localhost:3000", "http://d3mri5dv71y0ua.cloudfront.net/"})
+@CrossOrigin(origins = {"http://localhost:3000", "http://d3mri5dv71y0ua.cloudfront.net/", "https://d3mri5dv71y0ua.cloudfront.net/"})
 public class ScriptController {
 
     private final ScriptRepository scriptRepository;
