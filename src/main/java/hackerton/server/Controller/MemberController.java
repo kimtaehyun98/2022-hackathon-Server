@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/create")
-@CrossOrigin(origins = "http://localhost:3000")
+@CrossOrigin(origins = "http://localhost:3000, http://homespeak.s3-website.ap-northeast-2.amazonaws.com/#/")
 public class MemberController {
 
     private final MemberRepository memberRepository;
