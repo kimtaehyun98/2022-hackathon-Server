@@ -4,12 +4,14 @@ import hackerton.server.Model.Script;
 import hackerton.server.Model.UserProblem;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.stereotype.Repository;
 
 import javax.sql.DataSource;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+@Repository
 public class ScriptRepository {
 
     private JdbcTemplate jdbcTemplate;
@@ -20,7 +22,7 @@ public class ScriptRepository {
     }
 
     public List<Script> getTutorials() throws SQLException {
-        String query = "select * from PROBLEM";
+        String query = "select * from PROBLEM WHERE isTutorial = true";
         return this.jdbcTemplate.query(query,
                 (rs, rowNum) -> new Script(
                         rs.getInt("problemId"),

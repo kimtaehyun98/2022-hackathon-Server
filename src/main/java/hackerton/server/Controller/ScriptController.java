@@ -1,7 +1,11 @@
 package hackerton.server.Controller;
 
 import hackerton.server.Model.Script;
+import hackerton.server.Repository.ProblemRepository;
 import hackerton.server.Repository.ScriptRepository;
+import hackerton.server.Service.ProblemService;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -13,9 +17,15 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/scripts")
+@Slf4j
 public class ScriptController {
 
-    private static final ScriptRepository scriptRepository = new ScriptRepository();
+    private final ScriptRepository scriptRepository;
+
+    @Autowired
+    public ScriptController(ScriptRepository scriptRepository) {
+        this.scriptRepository = scriptRepository;
+    }
 
     @GetMapping("/tutorial")
     public List<Script> tutorial(Model model) throws SQLException {
