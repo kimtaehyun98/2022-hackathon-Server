@@ -16,7 +16,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/rank")
-@CrossOrigin(origins = "http://localhost:3000, http://homespeak.s3-website.ap-northeast-2.amazonaws.com/#/")
+@CrossOrigin(origins = "http://localhost:3000")
 public class RankController {
 
     private final RankProblemRepository rankProblemRepository;
