@@ -17,6 +17,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/scripts")
 @Slf4j
+@CrossOrigin
 public class ScriptController {
 
     private final ScriptRepository scriptRepository;
