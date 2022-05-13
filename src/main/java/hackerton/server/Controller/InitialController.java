@@ -11,15 +11,5 @@ import org.springframework.web.bind.annotation.RestController;
 @RequiredArgsConstructor
 public class InitialController {
 
-    private final TestRepository testRepository;
 
-    @GetMapping("/")
-    public void init(Model model) {
-        Member member = new Member();
-        member.setMemberName("suhwan");
-        member.setMemberPw("123");
-        member.setMemberTotalScore(100L);
-
-
-    }
 }
