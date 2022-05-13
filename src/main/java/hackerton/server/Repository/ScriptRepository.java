@@ -23,7 +23,7 @@ public class ScriptRepository {
 
     public List<Script> getTutorials(String lan) throws SQLException {
         String query;
-        if(lan.equals("KOREAN")) query = "select * from PROBLEM_KR WHERE isTutorial = true and `language` != 'ENGLISH'";
+        if(lan.equals("KOREAN")) query = "select * from PROBLEM WHERE isTutorial = true and `language` != 'ENGLISH'";
         else query = "select * from PROBLEM WHERE isTutorial = true and `language` = 'ENGLISH'";
         return this.jdbcTemplate.query(query,
                 (rs, rowNum) -> new Script(
@@ -41,8 +41,7 @@ public class ScriptRepository {
 
     public List<Script> getUsers(String lan) throws SQLException {
         String query;
-        System.out.println(lan);
-        if(lan.equals("KOREAN")) query = "select * from PROBLEM_KR WHERE isTutorial = false and `language` != 'ENGLISH'";
+        if(lan.equals("KOREAN")) query = "select * from PROBLEM WHERE isTutorial = false and `language` != 'ENGLISH'";
         else query = "select * from PROBLEM WHERE isTutorial = false and `language` = 'ENGLISH'";
         return this.jdbcTemplate.query(query,
                 (rs, rowNum) -> new Script(
