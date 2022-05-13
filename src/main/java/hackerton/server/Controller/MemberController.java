@@ -22,6 +22,6 @@ public class MemberController {
 
     @PostMapping("/account")
     public void createMember(@RequestBody PostMember postMember){
-        memberService.createMember(postMember.getMemberId(), postMember.getMemberName(), postMember.getMemberEmail());
+        memberService.createMember(postMember.getMemberName(), postMember.getMemberEmail());
     }
 }

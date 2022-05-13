@@ -9,7 +9,7 @@ public class UserProblem {
 
     private Long userProblemId;
 
-    private Long memberId;
+    private String memberName;
 
     private Long problemId;
 

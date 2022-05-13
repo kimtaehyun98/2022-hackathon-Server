@@ -27,7 +27,7 @@ public class ProblemController {
 	
 	@PostMapping("/problem")
 	public PostScoreRes countScore(@RequestBody PostScoreReq postProblemReq){
-		problemService.checkSolve(postProblemReq.getMemberId(), postProblemReq.getProblemId(), postProblemReq.getScore());
+		problemService.checkSolve(postProblemReq.getMemberName(), postProblemReq.getProblemId(), postProblemReq.getScore());
 		int topScore = problemService.getTopScore(postProblemReq.getProblemId(), postProblemReq.getScore(), postProblemReq.getMemberName());
 		
 		log.info("topScore : {}", topScore);

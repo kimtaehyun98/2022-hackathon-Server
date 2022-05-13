@@ -16,9 +16,9 @@ public class MemberRepository {
         this.jdbcTemplate = new JdbcTemplate(dataSource);
     }
 
-    public void createMember(Long memberId, String memberName, String memberEmail){
-        String query = "insert MEMBER VALUES (?, ?, ?, 0, 0)";
-        Object[] param = new Object[]{memberId, memberName, memberEmail};
+    public void createMember(String memberName, String memberEmail){
+        String query = "insert MEMBER VALUES (?, ?, 0, 0)";
+        Object[] param = new Object[]{memberName, memberEmail};
         this.jdbcTemplate.update(query, param);
     }
 }

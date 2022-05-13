@@ -20,16 +20,16 @@ public class ProblemService {
 	/**
 	 * user가 문제를 두 번 이상 풀었는지 확인 후 DB 갱신
 	 */
-	public void checkSolve(int uid, int pid, int score){
+	public void checkSolve(String name, int pid, int score){
 		// 문제를 풀었었는지 검사
-		List<UserProblem> userProblems = problemRepository.checkSolve(uid, pid);
+		List<UserProblem> userProblems = problemRepository.checkSolve(name, pid);
 		
 		// 문제를 풀었었다면 update, 아니면 insert
 		if(userProblems.isEmpty()){
-			problemRepository.insertUserProblem(uid, pid, score);
+			problemRepository.insertUserProblem(name, pid, score);
 		}
 		else {
-			problemRepository.updateUserProblem(uid, pid, score);
+			problemRepository.updateUserProblem(name, pid, score);
 		}
 	}
 	

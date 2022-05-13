@@ -14,7 +14,7 @@ public class MemberService {
         this.memberRepository = memberRepository;
     }
 
-    public void createMember(Long memberId, String memberName, String memberEmail){
-        memberRepository.createMember(memberId, memberName, memberEmail);
+    public void createMember(String memberName, String memberEmail){
+        memberRepository.createMember(memberName, memberEmail);
     }
 }
