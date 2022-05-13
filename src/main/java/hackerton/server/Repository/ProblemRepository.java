@@ -53,4 +53,10 @@ public class ProblemRepository {
 		Object[] param = new Object[]{score, pid};
 		this.jdbcTemplate.update(query, param);
 	}
+	
+	public void createProblem(String name, String lang, String content, String tier, Boolean isTutorial){
+		String query = "insert PROBLEM VALUES(default, ?, ?, ?, ?, 0, 0, ' ', ?)";
+		Object[] param = new Object[]{name, lang, content, tier, isTutorial};
+		this.jdbcTemplate.update(query, param);
+	}
 }

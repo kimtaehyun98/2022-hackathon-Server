@@ -1,6 +1,8 @@
 package hackerton.server.Controller;
 
+import hackerton.server.Model.Problems.PostCreateReq;
 import hackerton.server.Model.Problems.PostScoreReq;
+import hackerton.server.Model.Problems.PostScoreRes;
 import hackerton.server.Repository.ProblemRepository;
 import hackerton.server.Service.ProblemService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,13 +23,25 @@ public class ProblemController {
 	}
 	
 	@PostMapping
-	public void countScore(@RequestBody PostScoreReq postProblemReq){
+	public PostScoreRes countScore(@RequestBody PostScoreReq postProblemReq){
 		problemService.checkSolve(postProblemReq.getMemberId(), postProblemReq.getProblemId(), postProblemReq.getScore());
-		problemService.getTopScore(postProblemReq.getProblemId(), postProblemReq.getScore());
+		int topScore = problemService.getTopScore(postProblemReq.getProblemId(), postProblemReq.getScore());
+		
+		PostScoreRes res = new PostScoreRes();
+		int score = postProblemReq.getScore();
+		
+		// topScore가 갱신되지 않았으면 -1
+		if(topScore > score) res.setTopScore(score);
+		else res.setTopScore(-1);
+		
+		res.setTopMemberName(postProblemReq.getMemberName());
+		
+		return res;
 	}
 	
 	@PostMapping("/setProblem")
-	public void createProblem(@RequestBody hackerton.server.Model.Problems.PostCreateReq postCreateReq){
-	
+	public void createProblem(@RequestBody PostCreateReq postCreateReq){
+		problemService.createProblem(postCreateReq.getMemberName(), postCreateReq.getLanguage(),
+				postCreateReq.getContent(), postCreateReq.getTier(), postCreateReq.getIsTutorial());
 	}
 }

@@ -13,4 +13,6 @@ public class PostCreateReq {
 	public String content;
 	
 	public String tier;
+	
+	public Boolean isTutorial;
 }
