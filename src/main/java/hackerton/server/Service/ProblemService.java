@@ -1,7 +1,7 @@
 package hackerton.server.Service;
 
-import hackerton.server.Model.Problem.PostCreateReq;
-import hackerton.server.Model.Problem.PostScoreReq;
+import hackerton.server.Model.Problems.PostCreateReq;
+import hackerton.server.Model.Problems.PostScoreReq;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

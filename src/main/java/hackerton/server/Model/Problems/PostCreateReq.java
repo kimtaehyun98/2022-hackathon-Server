@@ -1,4 +1,4 @@
-package hackerton.server.Model.Problem;
+package hackerton.server.Model.Problems;
 
 import lombok.Getter;
 import lombok.Setter;

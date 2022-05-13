@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.List;
 
 @RestController
 @RequestMapping("/scripts")
@@ -17,12 +18,12 @@ public class ScriptController {
     private static final ScriptRepository scriptRepository = new ScriptRepository();
 
     @GetMapping("/tutorial")
-    public ArrayList<Script> tutorial(Model model) throws SQLException {
+    public List<Script> tutorial(Model model) throws SQLException {
         return scriptRepository.getTutorials();
     }
 
     @GetMapping("/user")
-    public ArrayList<Script> user(Model model) throws SQLException {
+    public List<Script> user(Model model) throws SQLException {
         return scriptRepository.getUsers();
     }
 
