@@ -7,15 +7,10 @@ import lombok.Setter;
 @Getter
 @Setter
 @AllArgsConstructor
-public class Member {
-
+public class PostMember {
     private Long memberId;
 
     private String memberName;
 
     private String memberEmail;
-
-    private Long memberTotalScore;
-
-    private Long memberSolveCnt;
 }
