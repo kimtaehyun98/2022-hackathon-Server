@@ -10,7 +10,7 @@ public class Script {
 
     int problemId;
 
-    String madeMemberName;
+    String madeUserName;
 
     String language;
 
