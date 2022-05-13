@@ -1,6 +1,6 @@
 package hackerton.server.Controller;
 
-import hackerton.server.Model.Problem.PostScoreReq;
+import hackerton.server.Model.Problems.PostScoreReq;
 import hackerton.server.Repository.ProblemRepository;
 import hackerton.server.Service.ProblemService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,12 +22,12 @@ public class ProblemController {
 	
 	@PostMapping
 	public void countScore(@RequestBody PostScoreReq postProblemReq){
-		problemService.checkSolve(postProblemReq);
-		problemService.getTopScore(postProblemReq.getProblemId());
+		problemService.checkSolve(postProblemReq.getMemberId(), postProblemReq.getProblemId(), postProblemReq.getScore());
+		problemService.getTopScore(postProblemReq.getProblemId(), postProblemReq.getScore());
 	}
 	
 	@PostMapping("/setProblem")
-	public void createProblem(){
+	public void createProblem(@RequestBody hackerton.server.Model.Problems.PostCreateReq postCreateReq){
 	
 	}
 }
