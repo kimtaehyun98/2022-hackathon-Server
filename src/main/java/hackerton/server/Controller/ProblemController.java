@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @Slf4j
-@CrossOrigin(origins = "http://d3mri5dv71y0ua.cloudfront.net/")
+@CrossOrigin(origins = {"http://localhost:3000", "http://d3mri5dv71y0ua.cloudfront.net/"})
 public class ProblemController {
 
 	private final ProblemRepository problemRepository;
