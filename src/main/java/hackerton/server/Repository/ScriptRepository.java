@@ -41,7 +41,6 @@ public class ScriptRepository {
 
     public List<Script> getUsers(String lan) throws SQLException {
         String query;
-        System.out.println(lan);
         if(lan.equals("KOREAN")) query = "select * from PROBLEM WHERE isTutorial = false and `language` != 'ENGLISH'";
         else query = "select * from PROBLEM WHERE isTutorial = false and `language` = 'ENGLISH'";
         return this.jdbcTemplate.query(query,

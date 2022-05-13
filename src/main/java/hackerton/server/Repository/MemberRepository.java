@@ -1,10 +1,13 @@
 package hackerton.server.Repository;
 
+import hackerton.server.Model.GetMember;
+import hackerton.server.Model.UserProblem;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
 import javax.sql.DataSource;
+import java.util.List;
 
 @Repository
 public class MemberRepository {
@@ -21,4 +24,19 @@ public class MemberRepository {
         Object[] param = new Object[]{memberName, memberEmail};
         this.jdbcTemplate.update(query, param);
     }
+
+    public List<GetMember> getMember(String memberName){
+        String query = "select * from MEMBER WHERE memberName = ?";
+        Object[] param = new Object[]{memberName};
+        return this.jdbcTemplate.query(query,
+                (rs, rowNum) -> new GetMember(
+                        rs.getString("memberName"),
+                        rs.getString("memberEmail"),
+                        rs.getInt("memberTotalScore"),
+                        rs.getInt("memberSolveCnt")
+                ),
+                param
+        );
+    }
+
 }
