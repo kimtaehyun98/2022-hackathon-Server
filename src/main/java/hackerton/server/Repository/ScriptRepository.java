@@ -21,8 +21,10 @@ public class ScriptRepository {
         this.jdbcTemplate = new JdbcTemplate(dataSource);
     }
 
-    public List<Script> getTutorials() throws SQLException {
-        String query = "select * from PROBLEM WHERE isTutorial = true";
+    public List<Script> getTutorials(String lan) throws SQLException {
+        String query;
+        if(lan.equals("한국어")) query = "select * from PROBLEM WHERE isTutorial = true and `language` = '한국어'";
+        else query = "select * from PROBLEM WHERE isTutorial = true and `language` = 'ENGLISH'";
         return this.jdbcTemplate.query(query,
                 (rs, rowNum) -> new Script(
                         rs.getInt("problemId"),
@@ -37,8 +39,10 @@ public class ScriptRepository {
         );
     }
 
-    public List<Script> getUsers() throws SQLException {
-        String query = "select * from PROBLEM where isTutorial = false";
+    public List<Script> getUsers(String lan) throws SQLException {
+        String query;
+        if(lan.equals("한국어")) query = "select * from PROBLEM WHERE isTutorial = false and `language` = '한국어'";
+        else query = "select * from PROBLEM WHERE isTutorial = false and `language` = 'ENGLISH'";
         return this.jdbcTemplate.query(query,
                 (rs, rowNum) -> new Script(
                         rs.getInt("problemId"),
