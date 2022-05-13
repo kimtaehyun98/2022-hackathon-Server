@@ -16,7 +16,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/rank")
-@CrossOrigin
+@CrossOrigin(origins = "http://localhost:3000")
 public class RankController {
 
     private final RankProblemRepository rankProblemRepository;
