@@ -21,7 +21,7 @@ public class RankProblemRepository {
 
 
     public List<RankProblem> getAllRankProblem() throws SQLException {
-        String query = "select problemId, topMemberName, topScore from PROBLEM ORDER BY topScore DESC";
+        String query = "select problemId, topMemberName, topScore from PROBLEM ORDER BY problemId ASC";
         return this.jdbcTemplate.query(query,
                 (rs, rowNum) -> new RankProblem(
                         rs.getLong("problemId"),
