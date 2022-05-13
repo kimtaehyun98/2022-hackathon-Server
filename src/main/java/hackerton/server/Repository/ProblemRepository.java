@@ -35,6 +35,9 @@ public class ProblemRepository {
 		String query = "insert USER_PROBLEM VALUES (default, ?, ?, ?)";
 		Object[] param = new Object[]{uid, pid, score};
 		this.jdbcTemplate.update(query, param);
+
+		query = "update MEMBER set memberSolveCnt = memberSolveCnt + 1 WHERE memberId = ?";
+		this.jdbcTemplate.update(query, uid);
 	}
 	
 	public void updateUserProblem(int uid, int pid, int score){
