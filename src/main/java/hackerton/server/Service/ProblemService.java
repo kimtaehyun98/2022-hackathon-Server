@@ -33,17 +33,19 @@ public class ProblemService {
 		}
 	}
 	
-	public void getTopScore(int pid, int score){
+	public int getTopScore(int pid, int score){
 		// 해당 문제의 최고 점수 가져옴
 		int topScore = problemRepository.getTopScore(pid);
 		// 최고 점수보다 높다면 update
 		if(score > topScore){
 			problemRepository.updateTopScore(pid, score);
 		}
+		return topScore;
 	}
 	
-	public void createProblem(){
+	public void createProblem(String name, String lang, String content, String tier, Boolean isTutorial){
 		// 문제 생성
+		problemRepository.createProblem(name, lang, content, tier, isTutorial);
 	}
 	
 }
