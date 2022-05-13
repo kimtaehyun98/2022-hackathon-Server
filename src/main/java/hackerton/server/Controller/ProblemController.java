@@ -12,7 +12,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/problem")
 @Slf4j
 @CrossOrigin
 public class ProblemController {
@@ -26,7 +25,7 @@ public class ProblemController {
 		this.problemService = problemService;
 	}
 	
-	@PostMapping
+	@PostMapping("/problem")
 	public PostScoreRes countScore(@RequestBody PostScoreReq postProblemReq){
 		problemService.checkSolve(postProblemReq.getMemberId(), postProblemReq.getProblemId(), postProblemReq.getScore());
 		int topScore = problemService.getTopScore(postProblemReq.getProblemId(), postProblemReq.getScore(), postProblemReq.getMemberName());
@@ -46,7 +45,7 @@ public class ProblemController {
 		return res;
 	}
 	
-	@PostMapping("/setProblem")
+	@PostMapping("/problem/setProblem")
 	public void createProblem(@RequestBody PostCreateReq postCreateReq){
 		problemService.createProblem(postCreateReq.getMemberName(), postCreateReq.getLanguage(),
 				postCreateReq.getContent(), postCreateReq.getTier(), postCreateReq.getIsTutorial());
