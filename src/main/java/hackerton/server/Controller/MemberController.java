@@ -1,10 +1,14 @@
 package hackerton.server.Controller;
 
+import hackerton.server.Model.GetMember;
 import hackerton.server.Model.PostMember;
 import hackerton.server.Repository.MemberRepository;
 import hackerton.server.Service.MemberService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
+
 
 @RestController
 @RequestMapping("/create")
@@ -20,8 +24,13 @@ public class MemberController {
         this.memberService = memberService;
     }
 
-    @PostMapping("/account")
+    @PostMapping("/create/account")
     public void createMember(@RequestBody PostMember postMember){
         memberService.createMember(postMember.getMemberName(), postMember.getMemberEmail());
+    }
+
+    @GetMapping("/account")
+    public List<GetMember> getMember(@RequestParam String memberName){
+        return memberService.getMember(memberName);
     }
 }
