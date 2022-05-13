@@ -20,11 +20,11 @@ public class ScriptRepository {
     }
 
     public List<Script> getTutorials() throws SQLException {
-        String query = "select * from PROBLEM where isTutorial = true";
+        String query = "select * from PROBLEM";
         return this.jdbcTemplate.query(query,
                 (rs, rowNum) -> new Script(
                         rs.getInt("problemId"),
-                        rs.getString("madeMemberName"),
+                        rs.getString("madeUserName"),
                         rs.getString("language"),
                         rs.getString("content"),
                         rs.getString("tier"),
@@ -40,7 +40,7 @@ public class ScriptRepository {
         return this.jdbcTemplate.query(query,
                 (rs, rowNum) -> new Script(
                         rs.getInt("problemId"),
-                        rs.getString("madeMemberName"),
+                        rs.getString("madeUserName"),
                         rs.getString("language"),
                         rs.getString("content"),
                         rs.getString("tier"),

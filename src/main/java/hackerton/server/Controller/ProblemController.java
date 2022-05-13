@@ -22,12 +22,12 @@ public class ProblemController {
 	
 	@PostMapping
 	public void countScore(@RequestBody PostScoreReq postProblemReq){
-		problemService.checkSolve(postProblemReq);
-		problemService.getTopScore(postProblemReq.getProblemId());
+		problemService.checkSolve(postProblemReq.getMemberId(), postProblemReq.getProblemId(), postProblemReq.getScore());
+		problemService.getTopScore(postProblemReq.getProblemId(), postProblemReq.getScore());
 	}
 	
 	@PostMapping("/setProblem")
-	public void createProblem(){
+	public void createProblem(@RequestBody hackerton.server.Model.Problems.PostCreateReq postCreateReq){
 	
 	}
 }

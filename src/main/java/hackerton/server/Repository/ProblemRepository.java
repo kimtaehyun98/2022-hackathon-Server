@@ -22,12 +22,35 @@ public class ProblemRepository {
 		Object[] param = new Object[]{uid, pid};
 		return this.jdbcTemplate.query(query,
 				(rs, rowNum) -> new UserProblem(
-						rs.getLong("userProbelmId"),
+						rs.getLong("userProblemId"),
 						rs.getLong("memberId"),
 						rs.getLong("problemId"),
 						rs.getLong("score")
 				),
 				param
 		);
+	}
+	
+	public void insertUserProblem(int uid, int pid, int score){
+		String query = "insert USER_PROBLEM VALUES (default, ?, ?, ?)";
+		Object[] param = new Object[]{uid, pid, score};
+		this.jdbcTemplate.update(query, param);
+	}
+	
+	public void updateUserProblem(int uid, int pid, int score){
+		String query = "update USER_PROBLEM set score = ? where memberId = ? and problemId = ?";
+		Object[] param = new Object[]{score, uid, pid};
+		this.jdbcTemplate.update(query, param);
+	}
+	
+	public int getTopScore(int pid){
+		String query = "select topScore from PROBLEM where problemId = ?";
+		return this.jdbcTemplate.queryForObject(query, Integer.class, pid);
+	}
+	
+	public void updateTopScore(int pid, int score){
+		String query = "update PROBLEM set topScore = ? where problemId = ?";
+		Object[] param = new Object[]{score, pid};
+		this.jdbcTemplate.update(query, param);
 	}
 }
