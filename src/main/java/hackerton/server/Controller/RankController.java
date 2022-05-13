@@ -4,6 +4,7 @@ import hackerton.server.Model.RankProblem;
 import hackerton.server.Model.RankUser;
 import hackerton.server.Repository.RankProblemRepository;
 import hackerton.server.Repository.RankUserRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -16,8 +17,15 @@ import java.util.List;
 @RequestMapping("/rank")
 public class RankController {
 
-    private static final RankProblemRepository rankProblemRepository = new RankProblemRepository();
-    private static final RankUserRepository rankUserRepository = new RankUserRepository();
+    private final RankProblemRepository rankProblemRepository;
+    private final RankUserRepository rankUserRepository;
+
+    @Autowired
+    public RankController(RankProblemRepository rankProblemRepository, RankUserRepository rankUserRepository) {
+        this.rankProblemRepository = rankProblemRepository;
+        this.rankUserRepository = rankUserRepository;
+    }
+
 
     @GetMapping("/problem")
     public List<RankProblem> rankProblems(Model model) throws SQLException {
