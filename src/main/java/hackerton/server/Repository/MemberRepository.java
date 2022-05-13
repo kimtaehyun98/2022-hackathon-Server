@@ -39,17 +39,4 @@ public class MemberRepository {
         );
     }
 
-    public List<UserProblem> checkSolve(int uid, int pid){
-        String query = "select * from USER_PROBLEM where memberId = ? and problemId = ?";
-        Object[] param = new Object[]{uid, pid};
-        return this.jdbcTemplate.query(query,
-                (rs, rowNum) -> new UserProblem(
-                        rs.getLong("userProblemId"),
-                        rs.getLong("memberId"),
-                        rs.getLong("problemId"),
-                        rs.getLong("score")
-                ),
-                param
-        );
-    }
 }
